@@ -10,9 +10,11 @@
 
   environment.systemPackages = with pkgs; [
     xdg-user-dirs
+    xorg.xkill
     kdeApplications.konsole
     kdeApplications.dolphin-plugins
     kdeApplications.okular
+    ark unzip unar p7zip
     kdeApplications.print-manager
     kdeApplications.kwalletmanager
     kdeApplications.kgpg

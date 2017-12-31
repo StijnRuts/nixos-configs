@@ -9,13 +9,12 @@
     ./shell.nix
     ./desktop.nix
     ./users.nix
+    ./apps.nix
+    ./scratchpad.nix
   ];
 
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
-  # environment.systemPackages = with pkgs; [
-  #   wget vim
-  # ];
+  # Keep your NixOS system up-to-date automatically.
+  system.autoUpgrade.enable = true;
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
