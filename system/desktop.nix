@@ -9,14 +9,18 @@
   };
 
   environment.systemPackages = with pkgs; [
+    ark
+    dolphin
+    gwenview
+    kdeApplications.dolphin-plugins
+    kdeApplications.kcalcore
+    kdeApplications.kgpg
+    kdeApplications.konsole
+    kdeApplications.kwalletmanager
+    kdeApplications.okular
+    kdeApplications.print-manager
+    kdeApplications.spectacle
     xdg-user-dirs
     xorg.xkill
-    kdeApplications.konsole
-    kdeApplications.dolphin-plugins
-    kdeApplications.okular
-    ark unzip unar p7zip
-    kdeApplications.print-manager
-    kdeApplications.kwalletmanager
-    kdeApplications.kgpg
   ];
 }

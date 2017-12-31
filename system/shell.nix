@@ -27,7 +27,7 @@
       PS1_WORKDIR="\\w"
       PS1_PROMPT="\\$"
 
-      GIT_PROMPT=/run/current-system/sw/share/git/contrib/completion/git-prompt.sh
+      GIT_PROMPT=${pkgs.git}/share/git/contrib/completion/git-prompt.sh
 
       if [ -a $GIT_PROMPT ]; then
         # * unstaged

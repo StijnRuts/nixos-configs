@@ -12,7 +12,21 @@
   };
 
   environment.systemPackages = with pkgs; [
-    curl wget
     unstable.firefox
+    unstable.chromium
+    gimp inkscape krita pinta
+    gparted filelight kompare okteta
+    curl wget elinks lynx
+    tmux htop rsync dos2unix ncdu ddrescue shellcheck
+    imagemagick ffmpeg pandoc
+    p7zip unzip unrar
+    hunspell hunspellDicts.en-us #hunspellDicts.nl-be
+  ];
+
+  imports = [
+    ./fasd.nix
+    ./libre-office.nix
+    ./ranger.nix
+    ./redshift.nix
   ];
 }
