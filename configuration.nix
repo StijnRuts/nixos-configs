@@ -2,15 +2,9 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./boot.nix
-    ./networking.nix
-    ./locale.nix
-    ./services.nix
-    ./shell.nix
-    ./ssh.nix
-    ./desktop.nix
-    ./users.nix
-    ./apps.nix
+    ./system/all.nix
+    ./apps/all.nix
+    ./development/all.nix
     ./scratchpad.nix
   ];
 

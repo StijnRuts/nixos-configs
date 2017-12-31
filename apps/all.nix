@@ -14,7 +14,5 @@
   environment.systemPackages = with pkgs; [
     curl wget
     unstable.firefox
-    vim atom
-    git gitg
   ];
 }
