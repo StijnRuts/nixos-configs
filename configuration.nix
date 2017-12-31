@@ -8,6 +8,7 @@
     ./services.nix
     ./shell.nix
     ./desktop.nix
+    ./users.nix
   ];
 
   # List packages installed in system profile. To search by name, run:
@@ -15,12 +16,6 @@
   # environment.systemPackages = with pkgs; [
   #   wget vim
   # ];
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.extraUsers.guest = {
-  #   isNormalUser = true;
-  #   uid = 1000;
-  # };
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
