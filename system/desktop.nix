@@ -20,7 +20,6 @@
     kdeApplications.okular
     kdeApplications.print-manager
     kdeApplications.spectacle
-    xdg-user-dirs
     xorg.xkill
   ];
 }

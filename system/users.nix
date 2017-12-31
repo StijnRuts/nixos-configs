@@ -8,4 +8,13 @@
   };
 
   users.mutableUsers = false;
+
+  environment.systemPackages = with pkgs; [ pkgs.xdg-user-dirs ];
+
+  system.activationScripts = {
+    xdg-user-dirs = {
+      text = "${pkgs.xdg-user-dirs}/bin/xdg-user-dirs-update";
+      deps = ["users"];
+    };
+  };
 }
