@@ -7,6 +7,7 @@
     ./locale.nix
     ./services.nix
     ./shell.nix
+    ./ssh.nix
     ./desktop.nix
     ./users.nix
     ./apps.nix
