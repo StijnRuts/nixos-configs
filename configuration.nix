@@ -7,6 +7,7 @@
     ./locale.nix
     ./services.nix
     ./shell.nix
+    ./desktop.nix
   ];
 
   # List packages installed in system profile. To search by name, run:
@@ -14,16 +15,6 @@
   # environment.systemPackages = with pkgs; [
   #   wget vim
   # ];
-
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-  # Enable touchpad support.
-  # services.xserver.libinput.enable = true;
-
-  # Enable the KDE Desktop Environment.
-  # services.xserver.displayManager.sddm.enable = true;
-  # services.xserver.desktopManager.plasma5.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # users.extraUsers.guest = {
