@@ -1,34 +1,64 @@
 { config, pkgs, ... }:
 {
-  # Shell script code called during interactive bash shell initialisation
-  programs.bash.interactiveShellInit = "";
-
-  # Shell script code called during login bash shell initialisation
-  programs.bash.loginShellInit = "";
-
-  # Shell script code used to initialise the bash prompt.
-  programs.bash.promptInit = ''
-    # Provide a nice prompt if the terminal supports it.
-    if [ "$TERM" != "dumb" -o -n "$INSIDE_EMACS" ]; then
-      PROMPT_COLOR="1;31m"
-      let $UID && PROMPT_COLOR="1;32m"
-      PS1="\n\[\033[$PROMPT_COLOR\][\u@\h:\w]\\$\[\033[0m\] "
-      if test "$TERM" = "xterm"; then
-        PS1="\[\033]2;\h:\u:\w\007\]$PS1"
-      fi
-    fi
-  '';
-
-  # Shell script code called during bash shell initialisation.
-  programs.bash.shellInit = "";
-
   # Set of aliases for bash shell
   programs.bash.shellAliases = {
-    l = "ls -alh";
-    ll = "ls -l";
-    ls = "ls --color=tty";
+    ls = "ls --color=auto";
+    ll = "ls -la";
+    unalias = "type";
   };
 
   # Enable Bash completion for all interactive bash shells
   programs.bash.enableCompletion = true;
+
+  # Shell script code called during interactive bash shell initialisation
+  programs.bash.interactiveShellInit = ''
+    # no duplicates in history
+    HISTCONTROL="ignoreboth:erasedups"
+  '';
+
+  # Shell script code used to initialise the bash prompt.
+  programs.bash.promptInit = ''
+    if [ "$TERM" != "dumb" -o -n "$INSIDE_EMACS" ]; then
+      PS1_CLEAR="\[$(tput sgr0)\]"
+      PS1_COLOR_PRIMARY="\[\033[1;32m\]"
+      PS1_COLOR_SECONDARY="\[\033[38;5;11m\]"
+
+      PS1_NEWLINE="\\n"
+      PS1_WORKDIR="\\w"
+      PS1_PROMPT="\\$"
+
+      GIT_PROMPT=/run/current-system/sw/share/git/contrib/completion/git-prompt.sh
+
+      if [ -a $GIT_PROMPT ]; then
+        # * unstaged
+        # + staged
+        # % untracked
+        # $ stashed
+        # < behind
+        # > ahead
+        # <> diverged
+        # = up-to-date
+        GIT_PS1_SHOWDIRTYSTATE=1
+        GIT_PS1_SHOWUNTRACKEDFILES=1
+        GIT_PS1_SHOWSTASHSTATE=1
+        GIT_PS1_SHOWUPSTREAM=auto
+        GIT_PS1_DESCRIBE_STYLE=branch
+        source $GIT_PROMPT
+        PS1_GIT='$(__git_ps1 " [%s]")'
+      else
+        PS1_GIT=""
+      fi
+
+      PS1=$PS1_CLEAR
+      PS1+=$PS1_NEWLINE
+      PS1+=$PS1_COLOR_PRIMARY
+      PS1+=$PS1_WORKDIR
+      PS1+=$PS1_COLOR_SECONDARY
+      PS1+=$PS1_GIT
+      PS1+=$PS1_CLEAR
+      PS1+=$PS1_NEWLINE
+      PS1+=$PS1_PROMPT
+      PS1+=" "
+    fi
+  '';
 }
