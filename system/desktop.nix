@@ -22,4 +22,6 @@
     kdeApplications.spectacle
     xorg.xkill
   ];
+
+  hardware.pulseaudio.enable = true;
 }
