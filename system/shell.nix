@@ -16,6 +16,15 @@
     HISTCONTROL="ignoreboth:erasedups"
   '';
 
+  # Add to inputrc
+  environment.etc.inputrc = pkgs.lib.mkForce {
+    text = builtins.readFile <nixpkgs/nixos/modules/programs/bash/inputrc>
+      + ''
+        # case insensitive completion
+        set completion-ignore-case on
+      '';
+  };
+
   # Shell script code used to initialise the bash prompt.
   programs.bash.promptInit = ''
     if [ "$TERM" != "dumb" -o -n "$INSIDE_EMACS" ]; then
