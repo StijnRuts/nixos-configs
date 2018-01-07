@@ -2,9 +2,15 @@
 {
   # Set of aliases for bash shell
   programs.bash.shellAliases = {
+    unalias = "type";
     ls = "ls --color=auto";
     ll = "ls -la";
-    unalias = "type";
+    grep = "grep --color=auto";
+    nix-install = "sudo nixos-rebuild switch";
+    nix-update = "sudo nixos-rebuild switch --upgrade";
+    nix-search = "nix-env -qaP | grep";
+    nix-search-haskell = "nix-env -f \"<nixpkgs>\" -qaP -A haskellPackages | grep";
+    nix-search-node = "nix-env -f \"<nixpkgs>\" -qaP -A nodePackages | grep";
   };
 
   # Enable Bash completion for all interactive bash shells
